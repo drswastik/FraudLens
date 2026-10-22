@@ -2,6 +2,8 @@
 
 FraudLens is an end-to-end, mathematically rigorous machine learning pipeline. Rather than stopping at standard metrics (like PR-AUC), this project implements a **Decision Intelligence** layer that calibrates model probabilities and selects decision thresholds based on actual business constraints: investigation capacity and the financial cost of missed fraud versus false alarms.
 
+**Dataset Source:** [Kaggle Credit Card Fraud Detection Dataset](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud) *(Note: Raw data and model artifacts are not included in this repository due to file size limits).*
+
 ## Core ML Engineering Highlights
 * **Leakage-Proof Feature Engineering:** Implemented a custom Scikit-Learn Transformer to engineer cyclical time features (Sine/Cosine), Log-Amounts, and Hourly Z-Scores strictly within training folds to prevent temporal data leakage.
 * **Imbalance Strategy Showdown:** Proved mathematically via 5-Fold Stratified Cross-Validation that algorithmic class weighting outperformed SMOTE (Synthetic Oversampling) by 7% PR-AUC for this specific feature space.
@@ -20,3 +22,4 @@ FraudLens is an end-to-end, mathematically rigorous machine learning pipeline. R
 * `src/fraudlens/train.py` - 5-Fold CV pipelines and XGBoost hyperparameter tuning.
 * `src/fraudlens/evaluate.py` - Isotonic Regression probability calibration.
 * `src/fraudlens/decision_policy.py` - Bootstrap CIs and Financial Cost Matrix.
+* `dashboard/app.py` - Real-time Streamlit dashboard simulating live transaction scoring.
